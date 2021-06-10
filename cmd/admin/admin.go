@@ -81,7 +81,6 @@ var (
 	}
 )
 
-
 func newAdminApp(startCmd *cli.Command) *cli.App {
 	app := cli.NewApp()
 	app.Name = "dubbogo pixiu admin"
@@ -134,21 +133,36 @@ func SetupRouter() *gin.Engine {
 	r.GET("/config/api/base", GetBaseInfo)
 	r.POST("/config/api/base/", SetBaseInfo)
 	r.PUT("/config/api/base/", SetBaseInfo)
+
 	r.GET("/config/api/resource/list", GetResourceList)
 	r.GET("/config/api/resource/detail", GetResourceDetail)
 	r.POST("/config/api/resource", CreateResourceInfo)
 	r.PUT("/config/api/resource", ModifyResourceInfo)
 	r.DELETE("/config/api/resource", DeleteResourceInfo)
+
 	r.GET("/config/api/resource/method/list", GetMethodList)
 	r.GET("/config/api/resource/method/detail", GetMethodDetail)
 	r.POST("/config/api/resource/method", CreateMethodInfo)
 	r.PUT("/config/api/resource/method", ModifyMethodInfo)
 	r.DELETE("/config/api/resource/method", DeleteMethodInfo)
+
 	r.GET("/config/api/plugin_group/list", GetPluginGroupList)
 	r.GET("/config/api/plugin_group/detail", GetPluginGroupDetail)
 	r.POST("/config/api/plugin_group", CreatePluginGroup)
 	r.PUT("/config/api/plugin_group", ModifyPluginGroup)
 	r.DELETE("/config/api/plugin_group", DeletePluginGroup)
+
+	r.GET("/config/api/ratelimit/resource/list", GetRateLimitResourceList)
+	r.GET("/config/api/ratelimit/resource", GetRateLimitResource)
+	r.POST("/config/api/ratelimit/resource", CreateRateLimitResource)
+	r.PUT("/config/api/ratelimit/resource", ModifyLimitResource)
+	r.DELETE("/config/api/ratelimit/resource", DeleteRateLimitResource)
+
+	r.GET("/config/api/ratelimit/rule/list", GetRateLimitRuleList)
+	r.GET("/config/api/ratelimit/rule", GetRateLimitRule)
+	r.POST("/config/api/ratelimit/rule", CreateRateLimitRule)
+	r.PUT("/config/api/ratelimit/rule", ModifyLimitRule)
+	r.DELETE("/config/api/ratelimit/rule", DeleteRateLimitRule)
 
 	return r
 }
@@ -425,6 +439,46 @@ func DeletePluginGroup(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, WithRet("Success"))
+}
+
+func GetRateLimitResourceList(context *gin.Context) {
+
+}
+
+func GetRateLimitRuleList(context *gin.Context) {
+
+}
+
+func CreateRateLimitRule(context *gin.Context) {
+
+}
+
+func ModifyLimitRule(context *gin.Context) {
+
+}
+
+func DeleteRateLimitRule(context *gin.Context) {
+
+}
+
+func GetRateLimitRule(context *gin.Context) {
+
+}
+
+func CreateRateLimitResource(context *gin.Context) {
+
+}
+
+func GetRateLimitResource(context *gin.Context) {
+
+}
+
+func ModifyLimitResource(context *gin.Context) {
+
+}
+
+func DeleteRateLimitResource(context *gin.Context) {
+
 }
 
 // WithError transform err to RetData
